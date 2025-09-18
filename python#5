@@ -1,1 +1,52 @@
-print("Eliana Hernandez - 02240132001")
+usuarios = []
+
+def agregar_usuario():
+    nombre = input("Ingrese el nombre del usuario: ")
+    edad = int(input("Ingrese la edad del usuario: "))
+    ciudad = input("Ingrese la ciudad del usuario: ")
+    usuario = {"nombre": nombre, "edad": edad, "ciudad": ciudad}
+    usuarios.append(usuario)
+    print("Usuario agregado exitosamente.\n")
+
+def mostrar_usuarios():
+    if len(usuarios) == 0:
+        print("No hay usuarios registrados.\n")
+    else:
+        print("\n--- Lista de Usuarios ---")
+        for i in range(len(usuarios)):
+            usuario = usuarios[i]
+            print(f"{i+1}. Nombre: {usuario['nombre']}")
+            print(f"   Edad: {usuario['edad']}")
+            print(f"   Ciudad: {usuario['ciudad']}\n")
+
+def eliminar_usuario():
+    mostrar_usuarios()
+    if usuarios:
+        indice = int(input("Ingrese el número del usuario a eliminar: ")) - 1
+        if 0 <= indice < len(usuarios):
+            eliminado = usuarios.pop(indice)
+            print(f"\nUsuario {eliminado['nombre']} eliminado.\n")
+        else:
+            print("Índice inválido.\n")
+
+def menu():
+    while True:
+        print("MENÚ PRINCIPAL")
+        print("1. Agregar usuario")
+        print("2. Mostrar usuarios")
+        print("3. Eliminar usuario")
+        print("4. Finalizar programa")
+        opcion = input("Seleccione una opción: ")
+
+        if opcion == "1":
+            agregar_usuario()
+        elif opcion == "2":
+            mostrar_usuarios()
+        elif opcion == "3":
+            eliminar_usuario()
+        elif opcion == "4":
+            print("\nPrograma finalizado.")
+            break
+        else:
+            print("Opción inválida, intente de nuevo.\n")
+menu()
